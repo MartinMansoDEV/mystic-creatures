@@ -20,6 +20,3 @@ services:
     build: ../docker/mongo
     ports:
       - "27017:27017"
-    volumes:
-      - ../docker/volumes/mongo/data:/data/db
-      - ../docker/volumes/mongo/config:/data/
