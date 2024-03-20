@@ -1,0 +1,92 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+input CreatureCreationInput {
+  description: String!
+  gender: MysticCreatureGender!
+  goldBalance: Float!
+  health: Float!
+  image: String!
+  monsterPassword: String!
+
+  """Creature Name"""
+  name: CreatureNameCreationInput!
+
+  """Nationality array"""
+  nationality: [String!]!
+  secretNotes: String!
+  speed: Float!
+}
+
+input CreatureNameCreationInput {
+  first: String!
+  last: String!
+  title: String!
+}
+
+input CreatureNameUpdateInput {
+  first: String
+  last: String
+  title: String
+}
+
+input CreatureUpdateInput {
+  description: String
+  gender: MysticCreatureGender
+  goldBalance: Float
+  health: Float
+  image: String
+  monsterPassword: String
+
+  """Creature Name"""
+  name: CreatureNameUpdateInput
+
+  """Nationality array"""
+  nationality: [String!]
+  secretNotes: String
+  speed: Float
+}
+
+type Mutation {
+  createCreature(creature: CreatureCreationInput!): MysticCreature!
+  deleteCreature(id: String!): String!
+  modifyGoldBalance(goldAmount: Float!, id: String!): MysticCreature!
+  updateCreature(creature: CreatureUpdateInput!, id: String!): MysticCreature!
+}
+
+type MysticCreature {
+  description: String!
+  gender: MysticCreatureGender!
+  goldBalance: Float!
+  health: Float!
+
+  """Creature unique ID"""
+  id: String
+  image: String!
+  monsterPassword: String!
+
+  """Creature Name"""
+  name: MysticCreatureName!
+
+  """Nationality array"""
+  nationality: [String!]!
+  secretNotes: String!
+  speed: Float!
+}
+
+enum MysticCreatureGender {
+  FEMALE
+  MALE
+  OTHER
+}
+
+type MysticCreatureName {
+  first: String!
+  last: String!
+  title: String!
+}
+
+type Query {
+  getAllCreatures: [MysticCreature!]!
+}

@@ -1,0 +1,25 @@
+version: "3.9"
+services:
+
+  mystic-creatures:
+    restart: always
+    container_name: mystic-creatures
+    image: node:20-alpine
+    working_dir: /usr/src/app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo
+    volumes:
+      - ../:/usr/src/app
+    entrypoint: [ "npm", "run", "start:dev" ]
+
+  mongo:
+    container_name: mongo
+    restart: always
+    build: ../docker/mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - ../docker/volumes/mongo/data:/data/db
+      - ../docker/volumes/mongo/config:/data/
